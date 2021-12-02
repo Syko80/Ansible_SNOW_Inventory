@@ -1,5 +1,5 @@
 # Simple Inventory Plugin example
-plugin: servicenow.servicenow.now
+plugin: servicenow.itsm.now
 keyed_groups:
   - key: sn_sys_class_name | lower
     prefix: ''
