@@ -1,3 +1,4 @@
+---
 plugin: servicenow.servicenow.now
 host: servicenow.mydomain.com
 username: admin
