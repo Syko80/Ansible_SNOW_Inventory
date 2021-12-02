@@ -1,0 +1,50 @@
+---
+- name: Find Largest Files in Linux
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Check input information is provided
+      ansible.builtin.fail:
+        msg: You must supply a directory, a lookback duration (m)inutes (h)ours (d)ays (w)eeks, and a number of files required.  (vars: input_dir, age, filecount)
+      when: input_dir is undefined or age is undefined or filecount is undefined
+
+    - name: Get stats of {{input_dir}}
+      ansible.builtin.stat:
+        path: "{{input_dir}}"
+      register: infile_stats      
+
+    - name: Does {{input_dir}} exist?
+      ansible.builtin.fail:
+        msg: Input directory does not exist
+      when: infile_stats.stat.exists == false
+
+    - name: Is {{input_dir}} a directory?
+      ansible.builtin.fail:
+        msg: Input directory is not a directory
+      when: infile_stats.stat.exists == true and infile_stats.stat.isdir == false
+
+    - name: Get current usage of {{input_dir}}
+      shell: df -P {{input_dir}} | grep % | awk {'print $5'}
+      register: filesystem_used
+      changed_when: false
+
+    - name: Display usage of {{input_dir}}
+      debug:
+        msg: Filsystem usage of {{input_dir}} {{filesystem_used.stdout}}
+
+    - name: Recursively find {{input_dir}} files older than {{age}}
+      find:
+        file_type: file
+        paths: "{{input_dir}}"
+        age: "{{age}}"
+        recurse: yes                ######## probably needs to be yes, when not testing
+      register: foundfiles
+
+    - name: Output the largest files in {{input_dir}} which are at least {{age}} old
+      debug:
+        msg : File  {{filesloop_item.path}} Size {{(filesloop_item.size/1024/1024) | round (2,'ceil')}} MB Owner {{filesloop_item.pw_name}} Group {{filesloop_item.gr_name}}
+      loop: "{{(foundfiles.files | sort(attribute='size', reverse = True))[0:filecount | int]}}"
+      loop_control:
+        loop_var: filesloop_item
+...
