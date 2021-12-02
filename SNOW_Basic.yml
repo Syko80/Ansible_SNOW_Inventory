@@ -1,5 +1,5 @@
 # Simple Inventory Plugin example
-hosts: all
+# hosts: all
 plugin: servicenow.servicenow.now
 keyed_groups:
   - key: sn_sys_class_name | lower
