@@ -1,3 +1,4 @@
+---
 # Simple Inventory Plugin example
 plugin: servicenow.servicenow.now
 keyed_groups:
