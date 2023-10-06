@@ -14,4 +14,4 @@
   - name: Query SNOW
     include_tasks: tasks/cmdb_pull_info.yml
     vars:
-      ci_name: "DatabaseServer1"
+      ci_name: "lnux100"
