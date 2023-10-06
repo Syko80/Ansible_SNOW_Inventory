@@ -1,0 +1,10 @@
+---
+- name: Read Resources from Azure 
+  azure.azcollection.azure_rm_resource_info:
+    resource_group: "{{resource_group}}"
+    resource_type: resources
+  register: all_azure_rg_resources
+
+- name: Print Output
+  ansible.builtin.debug:
+    var: all_azure_rg_resources

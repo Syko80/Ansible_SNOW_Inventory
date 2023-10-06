@@ -1,0 +1,15 @@
+---
+- name: Add a CI to the SNOW CMDB
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    resource_group: "rg-ww-ce-automation-development-kcl-eastus-001"
+
+  tasks:
+  - name: Gather Azure Data
+    include_tasks: /tasks/get_azure_resources.yml
+
+  #- name: Update SNOW
+  #  include_tasks: /tasks/cmdb_add_or_update.yml
+
