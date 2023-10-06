@@ -28,5 +28,5 @@
       location: "{{item.location}}"
       cpu_core_count: "{{all_machine_sizes.sizes | community.general.json_query('[?name==item.vm_size].number_of_cores') | first}}"
       cpu_count: ""
-      ram: "{{all_machine_sizes.sizes | community.general.json_query('[?name==item.vm_size]..memory_in_mb') | first}}"
+      ram: "{{all_machine_sizes.sizes | community.general.json_query('[?name==item.vm_size].memory_in_mb') | first}}"
   register: update_hw
