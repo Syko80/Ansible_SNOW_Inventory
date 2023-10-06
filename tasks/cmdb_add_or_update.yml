@@ -26,5 +26,10 @@
       os_domain: "{{item.os_type}}"
       virtual: "true"
       location: "{{item.location}}"
+      #cpu_count: "{{ all_machine_sizes.sizes | json_query('[?name==item.vm_size].number_of_cores') | first }}"
 
   register: update_hw
+
+- name: Print the number of cores 
+  debug:
+  var: all_machine_sizes.sizes | json_query('[?name==`Standard_B1s`].number_of_cores') | first 
