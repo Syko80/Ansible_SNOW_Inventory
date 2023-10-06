@@ -4,7 +4,7 @@
     instance: "{{snow_details}}"
     #sys_id: "{{ item.sys_id }}"
     name: "{{ item.name }}"
-    short_description: "Azure Virtual Machine"
+    short_description: "Azure Virtual Machine - {{item.vm_size}}"
     serial_number: "{{ item.id }}"
     #asset_tag: "{{ inv_entries.asset }}"
     sys_class_name: >-
@@ -18,13 +18,13 @@
     environment: "{{item.tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
     ip_address: "{{ item.ip_address | default('IP Address Missing') }}"
-#    other:
-#      model_number: "{{ inv_entries.model }}"
-#      manufacturer: "{{ inv_entries.mfg }}"
-    
     other:
       discovery_source: "Azure through Ansible Automation"
       owned_by: "{{item.tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
       host_name: "{{ item.name }}"
+      os_domain: "{{item.os_type}}"
+      virtual: "true"
+      location: "{{item.location}}"
+
   register: update_hw
