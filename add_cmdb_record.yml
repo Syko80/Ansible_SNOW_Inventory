@@ -8,8 +8,8 @@
 
   tasks:
   - name: Gather Azure Data
-    include_tasks: /tasks/get_azure_resources.yml
+    include_tasks: tasks/get_azure_resources.yml
 
   #- name: Update SNOW
-  #  include_tasks: /tasks/cmdb_add_or_update.yml
+  #  include_tasks: tasks/cmdb_add_or_update.yml
 

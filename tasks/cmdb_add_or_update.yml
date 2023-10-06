@@ -1,5 +1,5 @@
 ---
-- name: "Add or Update CMDB CI"
+- name: Add or Update CMDB CI
   servicenow.itsm.configuration_item:
     sys_id: "{{ item.sys_id }}"
     name: "{{ inv_entries.name }}"
