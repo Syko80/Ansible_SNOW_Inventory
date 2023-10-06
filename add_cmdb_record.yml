@@ -6,7 +6,7 @@
   vars:
     resource_group: "rg-ww-ce-automation-development-kcl-eastus-001"
     snow_details:
-      host: "dev181367.service-now.com"
+      host: "https://dev181367.service-now.com"
       username: "admin"
       password: "vz*=hwF1CY5G"
 
