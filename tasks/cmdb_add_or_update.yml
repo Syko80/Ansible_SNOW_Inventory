@@ -13,7 +13,7 @@
     category: Hardware
     #sys_class_name: "{{ cmdb_table }}"
     ip_address: "{{ item.ip_address | default('IP Address Missing') }}"
-    #other:
-    #  model_number: "{{ inv_entries.model }}"
-    #  manufacturer: "{{ inv_entries.mfg }}"
+#    other:
+#      model_number: "{{ inv_entries.model }}"
+#      manufacturer: "{{ inv_entries.mfg }}"
   register: update_hw

@@ -1,0 +1,17 @@
+---
+- name: Get a CI details from SNOW
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    #resource_group: "rg-ww-ce-automation-development-kcl-eastus-001"
+    snow_details:
+      host: "https://dev181367.service-now.com"
+      username: "admin"
+      password: "vz*=hwF1CY5G"
+
+  tasks:
+  - name: Query SNOW
+    include_tasks: tasks/cmdb_pull_info.yml
+    vars:
+      ci_name: "DatabaseServer1"

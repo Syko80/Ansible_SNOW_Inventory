@@ -1,0 +1,12 @@
+---
+- name: Pull info from SNOW
+  servicenow.itsm.configuration_item_info:
+    instance: "{{snow_details}}"
+    #sys_id: "{{ item.sys_id }}"
+    name: "{{ ci_name }}"
+  register: snow_extract
+
+- name: Print Output
+  ansible.builtin.debug:
+    var: snow_extract
+
