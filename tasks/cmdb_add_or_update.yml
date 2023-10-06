@@ -1,8 +1,4 @@
 ---
-- name: Print it
-  debug:
-    msg: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='number_of_cores') | first }}"
-
 - name: Add or Update CMDB CI
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
