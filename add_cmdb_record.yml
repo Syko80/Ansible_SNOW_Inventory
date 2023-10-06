@@ -9,7 +9,7 @@
       host: "dev181367.service-now.com"
       username: "admin"
       password: "vz*=hwF1CY5G"
-
+      
   tasks:
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
