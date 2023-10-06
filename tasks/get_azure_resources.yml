@@ -10,6 +10,7 @@
 
 - name: Get all virtual machine size Info
   azure.azcollection.azure_rm_virtualmachinesize_info:
+    location: eastus
   register: all_machine_sizes
 
 - name: Print Output
