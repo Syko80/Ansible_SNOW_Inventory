@@ -13,6 +13,15 @@
     location: eastus
   register: all_machine_sizes
 
+#- name: Print Output
+#  ansible.builtin.debug:
+#    var: all_machine_sizes  
+
+- name: Get all image information
+  azure.azcollection.azure_rm_image_info:
+    resource_group: "{{resource_group}}"
+  register: all_os_images
+
 - name: Print Output
   ansible.builtin.debug:
-    var: all_machine_sizes  
+    var: all_os_images      
