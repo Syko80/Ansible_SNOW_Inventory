@@ -21,9 +21,10 @@
 #    other:
 #      model_number: "{{ inv_entries.model }}"
 #      manufacturer: "{{ inv_entries.mfg }}"
-    hostname: "{{ item.name }}"
+    
     other:
       discovery_source: "Azure through Ansible Automation"
       owned_by: "{{item.tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
+      hostname: "{{ item.name }}"
   register: update_hw
