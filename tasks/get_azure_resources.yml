@@ -9,7 +9,7 @@
     var: all_azure_rg_resources
 
 - name: Get all virtual machine size Info
-  azure_rm_virtualmachinesize_info:
+  azure.azcollection.azure_rm_virtualmachinesize_info:
   register: all_machine_sizes
 
 - name: Print Output
