@@ -1,5 +1,5 @@
 ---
-- name: Read Resources from Azure 
+- name: Get Virtual Machines
   azure.azcollection.azure_rm_virtualmachine_info:
     resource_group: "{{resource_group}}"
   register: all_azure_rg_resources
@@ -7,3 +7,11 @@
 - name: Print Output
   ansible.builtin.debug:
     var: all_azure_rg_resources
+
+- name: Get all virtual machine size Info
+  azure_rm_virtualmachinesize_info:
+  register: all_machine_sizes
+
+- name: Print Output
+  ansible.builtin.debug:
+    var: all_machine_sizes  
