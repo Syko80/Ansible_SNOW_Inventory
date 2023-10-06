@@ -32,4 +32,4 @@
 
 - name: Print the number of cores 
   debug:
-    var: all_machine_sizes.sizes | json_query('[?name==`Standard_B1s`].number_of_cores') | first 
+    msg: "{{all_machine_sizes.sizes | json_query('[?name==`Standard_B1s`].number_of_cores') | first}}"
