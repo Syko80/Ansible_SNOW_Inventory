@@ -1,22 +1,18 @@
 ---
 - name: Add or Update CMDB CI
   servicenow.itsm.configuration_item:
-    sys_id: "{{ item.sys_id }}"
-    name: "{{ inv_entries.name }}"
-    short_description: "{{ inv_entries.desc }}"
-    serial_number: "{{ inv_entries.serial_num }}"
+    #sys_id: "{{ item.sys_id }}"
+    name: "{{ item.name }}"
+    short_description: "Azure Virtual Machine"
+    serial_number: "{{ item.id }}"
     asset_tag: "{{ inv_entries.asset }}"
-#      class: cmdb_ci_server
-#      assigned_to: some.user
-#      sys_class_name: cmdb_ci_ip_switch
-#      environment: production
-#      category: Hardware
-    sys_class_name: "{{ cmdb_table }}"
-    environment: "{{ env }}"
-    category: "{{ cat }}"
-    ip_address: "{{ inv_entries.ip_addr }}"
-    other:
-      model_number: "{{ inv_entries.model }}"
-      manufacturer: "{{ inv_entries.mfg }}"
+    class: cmdb_ci_server
+    assigned_to: "{{item.tags.owner | default('Owner Tag Missing')}}"
+    environment: "{{item.tags.environment | default('Environment Tag Missing')}}"
+    category: Hardware
+    #sys_class_name: "{{ cmdb_table }}"
+    ip_address: "{{ item.ip_address | default('IP Address Missing') }}"
+    #other:
+    #  model_number: "{{ inv_entries.model }}"
+    #  manufacturer: "{{ inv_entries.mfg }}"
   register: update_hw
-  loop: "{{ all_config_items.records}}"

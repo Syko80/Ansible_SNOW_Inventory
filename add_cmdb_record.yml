@@ -10,6 +10,7 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
-  #- name: Update SNOW
-  #  include_tasks: tasks/cmdb_add_or_update.yml
+  - name: Update SNOW
+    include_tasks: tasks/cmdb_add_or_update.yml
+    loop: all_azure_rg_resources.vms
 
