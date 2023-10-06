@@ -19,7 +19,7 @@
 
 - name: Get all image information
   azure.azcollection.azure_rm_image_info:
-    resource_group: "{{resource_group}}"
+    #resource_group: "{{resource_group}}"
   register: all_os_images
 
 - name: Print Output
