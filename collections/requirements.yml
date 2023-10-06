@@ -2,3 +2,4 @@
 collections:
   - servicenow.itsm
   - azure.azcollection
+  - community.general
