@@ -12,5 +12,5 @@
 
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
-    loop: all_azure_rg_resources.vms
+    loop: all_azure_rg_resources.vms | list
 
