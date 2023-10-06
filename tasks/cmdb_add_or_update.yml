@@ -11,7 +11,7 @@
           {%- if item.os_type == 'Linux' -%}
           cmdb_ci_linux_server
           {%- elif item.os_type == 'Windows' -%}
-          cmdb_ci_windows_server
+          cmdb_ci_win_server
           {%- else -%}
           cmdb_ci_server
           {%- endif -%}
@@ -26,5 +26,5 @@
       discovery_source: "Azure through Ansible Automation"
       owned_by: "{{item.tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
-      hostname: "{{ item.name }}"
+      host_name: "{{ item.name }}"
   register: update_hw
