@@ -7,10 +7,16 @@
     short_description: "Azure Virtual Machine"
     serial_number: "{{ item.id }}"
     #asset_tag: "{{ inv_entries.asset }}"
-    sys_class_name: cmdb_ci_server
+    sys_class_name: >-
+          {%- if item.os_type == 'Linux' -%}
+          cmdb_ci_linux_server
+          {%- elif item.os_type == 'Windows' -%}
+          cmdb_ci_windows_server
+          {%- else -%}
+          cmdb_ci_server
+          {%- endif -%}
     environment: "{{item.tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
-    #sys_class_name: "{{ cmdb_table }}"
     ip_address: "{{ item.ip_address | default('IP Address Missing') }}"
 #    other:
 #      model_number: "{{ inv_entries.model }}"
