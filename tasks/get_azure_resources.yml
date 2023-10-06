@@ -13,6 +13,6 @@
     location: eastus
   register: all_machine_sizes
 
-#- name: Print Output
-#  ansible.builtin.debug:
-#    var: all_machine_sizes  
+- name: Print Output
+  ansible.builtin.debug:
+    var: all_machine_sizes  
