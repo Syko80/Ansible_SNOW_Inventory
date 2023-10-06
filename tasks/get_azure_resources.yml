@@ -4,15 +4,15 @@
     resource_group: "{{resource_group}}"
   register: all_azure_rg_resources
 
-- name: Print Output
-  ansible.builtin.debug:
-    var: all_azure_rg_resources
+#- name: Print Output
+#  ansible.builtin.debug:
+#    var: all_azure_rg_resources
 
 - name: Get all virtual machine size Info
   azure.azcollection.azure_rm_virtualmachinesize_info:
     location: eastus
   register: all_machine_sizes
 
-- name: Print Output
-  ansible.builtin.debug:
-    var: all_machine_sizes  
+#- name: Print Output
+#  ansible.builtin.debug:
+#    var: all_machine_sizes  

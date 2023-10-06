@@ -26,11 +26,7 @@
       os_domain: "{{item.os_type}}"
       virtual: "true"
       location: "{{item.location}}"
-      #cpu_count: "{{ all_machine_sizes.sizes | json_query('[?name==item.vm_size].number_of_cores') | first }}"
-
+      cpu_core_count: "{{all_machine_sizes.sizes | community.general.json_query('[?name==item.vm_size].number_of_cores') | first}}"
+      cpu_count: ""
+      ram: "{{all_machine_sizes.sizes | community.general.json_query('[?name==item.vm_size]..memory_in_mb') | first}}"
   register: update_hw
-
-- name: Print the number of cores 
-  debug:
-    msg: "{{all_machine_sizes.sizes | community.general.json_query('[?name==`Standard_B1s`].number_of_cores') | first}}"
-#    msg: "{{ all_machine_sizes.sizes | selectattr('name', '==', 'Standard_B1s') | map(attribute='number_of_cores') | first }}"
