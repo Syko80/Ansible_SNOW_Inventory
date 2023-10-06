@@ -20,7 +20,7 @@
 - name: Get all image information
   azure.azcollection.azure_rm_image_info:
     name: "0001-com-ubuntu-server-jammy"
-    resource_group: "{{resource_group}}"
+    #resource_group: "{{resource_group}}"
   register: all_os_images
 
 - name: Print Output
