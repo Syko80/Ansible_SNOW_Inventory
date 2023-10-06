@@ -1,6 +1,7 @@
 ---
 - name: Add or Update CMDB CI
   servicenow.itsm.configuration_item:
+    instance: "{{snow_details}}"
     #sys_id: "{{ item.sys_id }}"
     name: "{{ item.name }}"
     short_description: "Azure Virtual Machine"
