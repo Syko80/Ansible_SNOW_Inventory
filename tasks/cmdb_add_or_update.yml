@@ -6,7 +6,7 @@
     name: "{{ item.name }}"
     short_description: "Azure Virtual Machine"
     serial_number: "{{ item.id }}"
-    asset_tag: "{{ inv_entries.asset }}"
+    #asset_tag: "{{ inv_entries.asset }}"
     class: cmdb_ci_server
     assigned_to: "{{item.tags.owner | default('Owner Tag Missing')}}"
     environment: "{{item.tags.environment | default('Environment Tag Missing')}}"
