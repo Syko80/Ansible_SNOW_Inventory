@@ -8,7 +8,6 @@
     serial_number: "{{ item.id }}"
     #asset_tag: "{{ inv_entries.asset }}"
     sys_class_name: cmdb_ci_server
-    owned_by: "{{item.tags.owner | default('Owner Tag Missing')}}"
     environment: "{{item.tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
     #sys_class_name: "{{ cmdb_table }}"
@@ -16,6 +15,8 @@
 #    other:
 #      model_number: "{{ inv_entries.model }}"
 #      manufacturer: "{{ inv_entries.mfg }}"
-    supported_by: "JonnySykes IT Services LTD"
-    discovery_source: "Azure through Ansible Automation"
+    other:
+      discovery_source: "Azure through Ansible Automation"
+      owned_by: "{{item.tags.owner | default('Owner Tag Missing')}}"
+      supported_by: "JonnySykes IT Services LTD"
   register: update_hw
