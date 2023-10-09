@@ -1,10 +1,9 @@
 ---
-- name: Add a CI to the SNOW CMDB
+- name: Get Azure Data
   hosts: localhost
   gather_facts: no
 
   vars:
-    resource_group: "rg-ww-ce-automation-development-kcl-eastus-001"
     snow_details:
       host: "https://dev181367.service-now.com"
       username: "admin"
@@ -14,7 +13,11 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
+- name: Add a CI to the SNOW CMDB
+  hosts: all
+  gather_facts: no
+
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
-    loop: "{{all_azure_rg_resources.vms | list}}"
+    delegate_to: localhost
 

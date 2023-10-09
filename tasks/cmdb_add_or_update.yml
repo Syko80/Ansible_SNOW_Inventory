@@ -3,30 +3,30 @@
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
     #sys_id: "{{ item.sys_id }}"
-    name: "{{ item.name }}"
-    short_description: "Azure Virtual Machine - {{item.vm_size}}"
-    serial_number: "{{ item.id }}"
+    name: "{{ ansible_hostname }}"
+    short_description: "Azure Virtual Machine - {{virtual_machine_size}}"
+    serial_number: "{{ vmid }}"
     #asset_tag: "{{ inv_entries.asset }}"
     sys_class_name: >-
-          {%- if item.os_type == 'Linux' -%}
+          {%- if os_profile.system == 'Linux' -%}
           cmdb_ci_linux_server
-          {%- elif item.os_type == 'Windows' -%}
+          {%- elif os_profile.system == 'Windows' -%}
           cmdb_ci_win_server
           {%- else -%}
           cmdb_ci_server
           {%- endif -%}
-    environment: "{{item.tags.environment | default('Environment Tag Missing')}}"
+    environment: "{{tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
-    ip_address: "{{ item.ip_address | default('IP Address Missing') }}"
+    ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
     other:
       discovery_source: "Azure through Ansible Automation"
-      owned_by: "{{item.tags.owner | default('Owner Tag Missing')}}"
+      owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
-      host_name: "{{ item.name }}"
-      os_domain: "{{item.os_type}}"
+      host_name: "{{ ansible_hostname }}"
+      os_domain: "{{os_profile.system}}"
       virtual: "true"
-      location: "{{item.location}}"
-      cpu_core_count: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='number_of_cores') | first }}"
+      location: "{{location}}"
+      cpu_core_count: "{{ all_machine_sizes.sizes | selectattr('name', '==', virtual_machine_size) | map(attribute='number_of_cores') | first }}"
       cpu_count: ""
-      ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='memory_in_mb') | first }}"
+      ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', virtual_machine_size) | map(attribute='memory_in_mb') | first }}"
   register: update_hw
