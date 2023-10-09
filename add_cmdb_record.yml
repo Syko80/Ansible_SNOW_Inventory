@@ -1,7 +1,7 @@
 ---
 - name: Get Azure Data
   hosts: all
-  gather_facts: no
+  gather_facts: yes
 
   vars:
     snow_details:
@@ -10,13 +10,13 @@
       password: "vz*=hwF1CY5G"
 
   tasks:
+
+  - name: Display Gathered Facts
+    debug:
+      var: ansible_facts
+      
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
-#- name: Add a CI to the SNOW CMDB
-#  hosts: all
-#  gather_facts: no
-
-#  tasks:
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
