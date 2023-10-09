@@ -17,6 +17,8 @@
   hosts: all
   gather_facts: no
 
+  tasks:
+
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
     delegate_to: localhost
