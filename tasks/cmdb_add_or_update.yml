@@ -30,4 +30,4 @@
       cpu_count: ""
       ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', virtual_machine_size) | map(attribute='memory_in_mb') | first }}"
   register: update_hw
-  delegate_to: localhost
+  #delegate_to: localhost
