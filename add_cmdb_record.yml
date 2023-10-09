@@ -1,20 +1,17 @@
 ---
 - name: Get Azure Data
-  hosts: all
-  gather_facts: yes
+  hosts: localhost
+  gather_facts: no
 
   vars:
     snow_details:
       host: "https://dev181367.service-now.com"
       username: "admin"
       password: "vz*=hwF1CY5G"
+    resource_group: "rg-ww-ce-automation-development-kcl-eastus-001"
 
   tasks:
 
-  - name: Display Gathered Facts
-    debug:
-      var: ansible_facts
-      
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
