@@ -25,7 +25,7 @@
       host_name: "{{ item.name }}"
       os_domain: "{{ item.os_type }}"
       virtual: "true"
-      location: "{{location}}"
+      location: "{{item.location}}"
       cpu_core_count: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='number_of_cores') | first }}"
       cpu_count: ""
       ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='memory_in_mb') | first }}"
