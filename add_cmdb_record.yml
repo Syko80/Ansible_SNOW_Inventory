@@ -3,18 +3,6 @@
   hosts: localhost
   gather_facts: no
 
-  tasks:
-  - name: Gather Azure Data
-    include_tasks: tasks/get_azure_resources.yml
-
-  - name: Save the Azure data for use in later plays
-    set_fact: 
-      all_machine_sizes: "{{azure_machine_sizes}}"
-
-- name: Add a CI to the SNOW CMDB
-  hosts: all
-  gather_facts: no
-
   vars:
     snow_details:
       host: "https://dev181367.service-now.com"
@@ -22,6 +10,15 @@
       password: "vz*=hwF1CY5G"
 
   tasks:
+  - name: Gather Azure Data
+    include_tasks: tasks/get_azure_resources.yml
+
+#- name: Add a CI to the SNOW CMDB
+#  hosts: all
+#  gather_facts: no
+
+#  tasks:
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
+    with_inventory_hostnames: all
 
