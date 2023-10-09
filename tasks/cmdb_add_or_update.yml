@@ -5,7 +5,7 @@
     #sys_id: "{{ item.sys_id }}"
     name: "{{ item.name }}"
     short_description: "Azure Virtual Machine - {{item.vm_size}}"
-    serial_number: "{{ vmid }}"
+    serial_number: "{{ item.id }}"
     #asset_tag: "{{ inv_entries.asset }}"
     sys_class_name: >-
           {%- if item.os_type == 'Linux' -%}
