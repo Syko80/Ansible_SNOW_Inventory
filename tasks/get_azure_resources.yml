@@ -9,4 +9,13 @@
     location: eastus
   register: all_machine_sizes
 
-  
+- name: Get VM Info
+  azure.azcollection.azure_rm_virtualmachine_info:
+    resource_group: my_resource_group   # Replace with your Azure resource group name
+    name: my_vm_name                   # Replace with your VM name
+    azure_rm_cloud: AzureCloud         # Azure cloud name (e.g., AzureCloud, AzureUSGovernment, AzureChinaCloud, AzureGermanCloud)
+  register: vm_info
+
+- name: Display Private IP Address
+  debug:
+    var: vm_info.ansible_facts.azure_virtualmachine.network.private_ip_addresses[0]
