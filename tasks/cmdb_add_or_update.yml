@@ -34,4 +34,5 @@
 - name: Retrieve all configuration items
   servicenow.itsm.configuration_item_info:
     instance: "{{snow_details}}"
+    sys_class_name: "cmdb_ci_network_adapter"
   register: result
