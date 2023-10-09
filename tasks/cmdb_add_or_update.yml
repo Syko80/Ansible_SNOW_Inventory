@@ -8,9 +8,9 @@
     serial_number: "{{ vmid }}"
     #asset_tag: "{{ inv_entries.asset }}"
     sys_class_name: >-
-          {%- if os_profile.system == 'Linux' -%}
+          {%- if item.os_type == 'Linux' -%}
           cmdb_ci_linux_server
-          {%- elif os_profile.system == 'Windows' -%}
+          {%- elif item.os_type == 'Windows' -%}
           cmdb_ci_win_server
           {%- else -%}
           cmdb_ci_server
@@ -23,7 +23,7 @@
       owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
       host_name: "{{ item.name }}"
-      os_domain: "{{os_profile.system}}"
+      os_domain: "{{ item.os_type }}"
       virtual: "true"
       location: "{{location}}"
       cpu_core_count: "{{ all_machine_sizes.sizes | selectattr('name', '==', virtual_machine_size) | map(attribute='number_of_cores') | first }}"
