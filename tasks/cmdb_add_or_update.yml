@@ -4,7 +4,7 @@
     instance: "{{snow_details}}"
     #sys_id: "{{ item.sys_id }}"
     name: "{{ item.name }}"
-    short_description: "Azure Virtual Machine - {{virtual_machine_size}}"
+    short_description: "Azure Virtual Machine - {{item.vm_size}}"
     serial_number: "{{ vmid }}"
     #asset_tag: "{{ inv_entries.asset }}"
     sys_class_name: >-
@@ -26,8 +26,8 @@
       os_domain: "{{ item.os_type }}"
       virtual: "true"
       location: "{{location}}"
-      cpu_core_count: "{{ all_machine_sizes.sizes | selectattr('name', '==', vm_size) | map(attribute='number_of_cores') | first }}"
+      cpu_core_count: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='number_of_cores') | first }}"
       cpu_count: ""
-      ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', vm_size) | map(attribute='memory_in_mb') | first }}"
+      ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='memory_in_mb') | first }}"
   register: update_hw
   delegate_to: localhost
