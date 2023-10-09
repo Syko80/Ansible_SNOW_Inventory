@@ -13,13 +13,12 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
-#- name: Add a CI to the SNOW CMDB
-#  hosts: all
-#  gather_facts: no
+- name: Add a CI to the SNOW CMDB
+  hosts: all
+  gather_facts: no
 
-#  tasks:
+  tasks:
 
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
-    with_inventory_hostnames: all
 
