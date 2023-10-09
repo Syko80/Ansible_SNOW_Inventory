@@ -17,4 +17,4 @@
 
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
-    loop: "{{all_vms}}"
+    loop: "{{all_vms | list}}"
