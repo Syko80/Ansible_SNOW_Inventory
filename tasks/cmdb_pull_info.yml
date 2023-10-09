@@ -1,12 +1,13 @@
 ---
-- name: Pull info from SNOW
+- name: Pull netowrk adapter info from SNOW
   servicenow.itsm.configuration_item_info:
     instance: "{{snow_details}}"
-    #sys_id: "{{ item.sys_id }}"
-    name: "{{ ci_name }}"
-  register: snow_extract
+    sys_class_name: "cmdb_ci_network_adapter"
+  #register: snow_extract
 
-- name: Print Output
-  ansible.builtin.debug:
-    var: snow_extract
+- name: Pull ip info from SNOW
+  servicenow.itsm.configuration_item_info:
+    instance: "{{snow_details}}"
+    sys_class_name: "cmdb_ci_ip_address"
+  #register: snow_extract
 
