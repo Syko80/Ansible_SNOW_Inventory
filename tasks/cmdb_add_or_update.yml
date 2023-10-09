@@ -36,4 +36,5 @@
 - name: Retrieve all configuration items
   servicenow.itsm.configuration_item_info:
     sys_class_name: "cmdb_ci_network_adapter"
+    host: "ansible-summit-host"
   register: result
