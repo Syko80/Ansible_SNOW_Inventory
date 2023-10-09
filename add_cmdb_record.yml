@@ -7,6 +7,10 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
+  - name: Save the Azure data for use in later plays
+    set_fact: 
+      all_machine_sizes: "{{all_machine_sizes}}"
+
 - name: Add a CI to the SNOW CMDB
   hosts: all
   gather_facts: no
