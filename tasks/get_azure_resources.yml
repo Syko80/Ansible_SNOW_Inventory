@@ -3,4 +3,6 @@
   azure.azcollection.azure_rm_virtualmachinesize_info:
     location: eastus
   register: all_machine_sizes
+  delegate_to: localhost
+  run_once: true
   

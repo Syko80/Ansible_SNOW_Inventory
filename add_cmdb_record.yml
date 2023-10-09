@@ -1,6 +1,6 @@
 ---
 - name: Get Azure Data
-  hosts: localhost
+  hosts: all
   gather_facts: no
 
   vars:
@@ -20,5 +20,3 @@
 #  tasks:
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
-    with_inventory_hostnames: all
-
