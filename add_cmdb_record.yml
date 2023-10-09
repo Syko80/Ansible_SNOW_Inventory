@@ -9,7 +9,7 @@
 
   - name: Save the Azure data for use in later plays
     set_fact: 
-      all_machine_sizes: "{{all_machine_sizes}}"
+      all_machine_sizes: "{{azure_machine_sizes}}"
 
 - name: Add a CI to the SNOW CMDB
   hosts: all
