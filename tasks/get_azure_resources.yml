@@ -8,3 +8,8 @@
   azure.azcollection.azure_rm_virtualmachinesize_info:
     location: eastus
   register: all_machine_sizes
+
+- name: Get all network interface
+  azure_rm_networkinterface_info:
+    resource_group: "{{resource_group}}"
+  register: all_network_interfaces
