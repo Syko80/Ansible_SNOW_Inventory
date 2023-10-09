@@ -30,9 +30,8 @@
       cpu_count: ""
       ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', item.vm_size) | map(attribute='memory_in_mb') | first }}"
   register: update_hw
-  delegate_to: localhost
-
 
 - name: Retrieve all configuration items
   servicenow.itsm.configuration_item_info:
+    instance: "{{snow_details}}"
   register: result
