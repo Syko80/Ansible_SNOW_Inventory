@@ -3,12 +3,6 @@
   hosts: localhost
   gather_facts: no
 
-  vars:
-    snow_details:
-      host: "https://dev181367.service-now.com"
-      username: "admin"
-      password: "vz*=hwF1CY5G"
-
   tasks:
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
@@ -17,8 +11,13 @@
   hosts: all
   gather_facts: no
 
-  tasks:
+  vars:
+    snow_details:
+      host: "https://dev181367.service-now.com"
+      username: "admin"
+      password: "vz*=hwF1CY5G"
 
+  tasks:
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update.yml
 
