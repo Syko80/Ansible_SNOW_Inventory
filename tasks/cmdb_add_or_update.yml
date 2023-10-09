@@ -3,7 +3,7 @@
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
     #sys_id: "{{ item.sys_id }}"
-    name: "{{ ansible_hostname }}"
+    name: "{{ inventory_hostname }}"
     short_description: "Azure Virtual Machine - {{virtual_machine_size}}"
     serial_number: "{{ vmid }}"
     #asset_tag: "{{ inv_entries.asset }}"
@@ -22,7 +22,7 @@
       discovery_source: "Azure through Ansible Automation"
       owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
-      host_name: "{{ ansible_hostname }}"
+      host_name: "{{ inventory_hostname }}"
       os_domain: "{{os_profile.system}}"
       virtual: "true"
       location: "{{location}}"

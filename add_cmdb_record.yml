@@ -9,7 +9,7 @@
 
 - name: Add a CI to the SNOW CMDB
   hosts: all
-  gather_facts: yes
+  gather_facts: no
 
   vars:
     snow_details:
