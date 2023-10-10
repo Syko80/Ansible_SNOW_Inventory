@@ -31,6 +31,10 @@
       ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', azure_host.vm_size) | map(attribute='memory_in_mb') | first }}"
   register: host_data
 
+- name: add all hosts to one 
+  set_fact:
+    host_outputs: "{{host_data.record}}"
+
 - name: Print host_data
   debug:
-    var: host_data.record
+    var: host_outputs

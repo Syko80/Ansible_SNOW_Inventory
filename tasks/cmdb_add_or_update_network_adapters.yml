@@ -18,9 +18,9 @@
       supported_by: "JonnySykes IT Services LTD"
       virtual: "true"
       location: "{{ azure_networkadapter.location }}"
- # register: networkadapter_data
+  register: networkadapter_data
 
-- #name: Print a variable
-  #debug:
-  #  msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='subnet') | first }}"
+- name: Print a variable
+  debug:
+    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='subnet') | first }}"
   
