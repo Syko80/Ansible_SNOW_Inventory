@@ -31,8 +31,11 @@
       ram: "{{ all_machine_sizes.sizes | selectattr('name', '==', azure_host.vm_size) | map(attribute='memory_in_mb') | first }}"
   register: host_data
 
-  #- name: "Add Network Adapter for {{azure_host.name}}"
-  #  include_tasks: tasks/cmdb_add_or_update_network_adapters.yml
+- name: "Add Network Adapter for {{azure_host.name}}"
+  include_tasks: tasks/cmdb_add_or_update_network_adapters.yml
+  loop: "{{network_interface_names | list}}"
+  loop_control:
+    loop_var: network_adapter
 
 - name: Print host_data
   debug:
