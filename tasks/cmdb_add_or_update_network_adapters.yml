@@ -47,7 +47,7 @@
       ip_version: "4"
   loop:
   #  - "{{ all_network_interfaces.networkinterfaces.ip_configurations[0] | selectattr('name', '==', network_adapter) | map(attribute='private_ip_address') | first }}"
-    - "{{ all_network_interfaces.networkinterfaces.ip_configurations | selectattr('name', '==', network_adapter) }}"
+    - "{{ all_network_interfaces.networkinterfaces.ip_configurations[0] | selectattr('name', '==', network_adapter) }}"
   loop_control:
     loop_var: input_ipaddress
 
