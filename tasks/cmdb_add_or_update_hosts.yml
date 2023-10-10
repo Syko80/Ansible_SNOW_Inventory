@@ -36,7 +36,8 @@
   loop: "{{azure_host.network_interface_names | list}}"
   loop_control:
     loop_var: network_adapter
+    label: network_adapter
 
-- name: Print host_data
-  debug:
-    var: host_data.record.sys_id
+#- name: Print host_data
+#  debug:
+#    var: host_data.record.sys_id

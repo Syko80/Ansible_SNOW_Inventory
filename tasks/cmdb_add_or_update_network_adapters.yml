@@ -57,6 +57,7 @@
     - "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map('first') | map(attribute='public_ip_address') | first}}"
   loop_control:
     loop_var: input_ipaddress
+    label: ip_address
 
 #- name: Print a variable
 #  debug:
