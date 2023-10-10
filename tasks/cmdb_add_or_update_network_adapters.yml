@@ -20,6 +20,7 @@
  #     os_domain: "{{ item.os_type }}"
       virtual: "true"
       location: "{{host_data.record.location}}"
+      mac_address: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='mac_address') | first }}"
  # register: host_data
 
 - name: Print a variable
