@@ -35,7 +35,7 @@
 #    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
     other:
       #subcategory: Network
-      cmdb_ci: "{{ host_data.record.sys_id }}"
+      cmdb_ci: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='sys_id') | first }}"
       discovery_source: "Azure through Ansible Automation"
 #      owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
@@ -46,8 +46,8 @@
       ip_address: "{{ input_ipaddress }}"
       ip_version: "4"
   loop:
-    - "{{ network_adapter.private_ip_address }}"
-    - "{{ network_adapter.public_ip_address}}"
+    - "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='private_ip_address') | first }}"
+    - "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='public_ip_address') | first }}"
   loop_control:
     loop_var: input_ipaddress
 
