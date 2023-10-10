@@ -40,7 +40,7 @@
 #    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
     other:
       #subcategory: Network
-      cmdb_ci: "{{ network_data.record.sys_id }}"
+      nic: "{{ network_data.record.sys_id }}"
       discovery_source: "Azure through Ansible Automation"
 #      owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
