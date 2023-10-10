@@ -1,11 +1,11 @@
 ---
-- name: Pull netowrk adapter info from SNOW
+- name: Pull network adapter info from SNOW
   servicenow.itsm.configuration_item_info:
     instance: "{{snow_details}}"
     sys_class_name: "cmdb_ci_network_adapter"
   #register: snow_extract
 
-- name: Pull ip info from SNOW
+- name: Pull IP info from SNOW
   servicenow.itsm.configuration_item_info:
     instance: "{{snow_details}}"
     sys_class_name: "cmdb_ci_ip_address"

@@ -17,7 +17,7 @@
           {%- endif -%}
     environment: "{{tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
-    ip_address: "Check Adapter Settings"
+    ip_address: "Open Network Adapters"
     other:
       discovery_source: "Azure through Ansible Automation"
       owned_by: "{{tags.owner | default('Owner Tag Missing')}}"

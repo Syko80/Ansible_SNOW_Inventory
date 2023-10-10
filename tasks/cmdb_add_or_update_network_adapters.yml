@@ -26,6 +26,7 @@
       virtual: "true"
       location: "{{host_data.record.location}}"
       mac_address: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='mac_address') | first }}"
+      netmask: ""
   register: network_data
 
 - name: Add or Update CMDB CI - IP Addresses
