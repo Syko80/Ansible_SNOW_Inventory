@@ -58,7 +58,6 @@
           {% else %}
             Unknown
           {% endif %}
-      #ip_version: "4"
   when: input_ipaddress | length > 0
   loop:
     - "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map('first') | map(attribute='private_ip_address') | first}}"
