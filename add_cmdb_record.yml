@@ -15,7 +15,11 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
-  - name: Update SNOW
+  - name: Print the list of found images
+    debug:
+      msg: ""
+
+  - name: Update SNOW with Host, Network Adapters and IP
     include_tasks: tasks/cmdb_add_or_update_hosts.yml
     loop: "{{all_vms.vms | list}}"
     loop_control:

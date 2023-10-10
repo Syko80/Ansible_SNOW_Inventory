@@ -14,5 +14,5 @@
 - name: Pull Model info from SNOW
   servicenow.itsm.configuration_item_info:
     instance: "{{snow_details}}"
-    sys_class_name: "cmdb_model"
+    sys_class_name: "cmdb_hardware_product_model"
   #register: snow_extract
