@@ -24,7 +24,7 @@
   debug:
     msg: 
       - "{{ azure_networkadapter.name }}"
-      - "{{ all_vms.vms | selectattr('network_interface_names', '==', azure_networkadapter.name) | map(attribute='name') | first }}"
+      - "{{ all_vms.vms | selectattr('network_interface_names | string', '==', azure_networkadapter.name) | map(attribute='name') | first }}"
 
 #- name: Print a variable
 #  debug:
