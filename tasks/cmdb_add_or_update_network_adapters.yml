@@ -58,7 +58,6 @@
           {% else %}
             Unknown
           {% endif %}
-
       #ip_version: "4"
   when: input_ipaddress | length > 0
   loop:
