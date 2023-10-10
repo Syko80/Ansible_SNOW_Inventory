@@ -2,7 +2,6 @@
 - name: Add or Update CMDB CI - Network Adapters
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
-    cmdb_ci: "{{ host_data.record.sys_id }}"
     name: "{{ network_adapter }}"
     short_description: "Azure Network Adapter"
 #    serial_number: "{{ item.id }}"
@@ -10,9 +9,10 @@
     sys_class_name: "cmdb_ci_network_adapter"
     #environment: "{{tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
-    subcategory: Network
 #    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
     other:
+      subcategory: Network
+      cmdb_ci: "{{ host_data.record.sys_id }}"
       discovery_source: "Azure through Ansible Automation"
 #      owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
       supported_by: "JonnySykes IT Services LTD"
