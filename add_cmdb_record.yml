@@ -18,3 +18,4 @@
   - name: Update SNOW
     include_tasks: tasks/cmdb_add_or_update_hosts.yml
     loop: "{{all_vms.vms | list}}"
+      loop_var: azure_host
