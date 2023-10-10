@@ -33,4 +33,4 @@
 
 - name: add all hosts to one 
   set_fact:
-    host_outputs: "{{host_outputs + [host_data.record]}}"
+    host_outputs: "{{host_outputs | default('') + [host_data.record]}}"
