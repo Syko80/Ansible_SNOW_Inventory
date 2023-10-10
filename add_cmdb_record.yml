@@ -17,7 +17,8 @@
 
   - name: Extract unique vm_size values
     set_fact:
-      unique_vm_sizes: "{{ all_vms.vms | map(attribute='vm_size') | select('unique') | list }}"
+      #unique_vm_sizes: "{{ all_vms.vms | map(attribute='vm_size') | select('unique') | list }}"
+      unique_vm_sizes: "{{ all_vms.vms | json_query('[].vm_size') | unique }}"
 
   - name: Print the list of found images
     debug:
