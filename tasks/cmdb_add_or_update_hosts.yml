@@ -36,4 +36,4 @@
 
 - name: Print host_data
   debug:
-    var: host_data
+    var: host_data.record.sys_id
