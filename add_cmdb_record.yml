@@ -15,9 +15,13 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
+  - name: Extract unique vm_size values
+    set_fact:
+      unique_vm_sizes: "{{ all_machine_sizes.sizes | map(attribute='vm_size') | select('unique') | list }}"
+
   - name: Print the list of found images
     debug:
-      msg: ""
+      var: unique_vm_sizes
 
   - name: Update SNOW with Host, Network Adapters and IP
     include_tasks: tasks/cmdb_add_or_update_hosts.yml
@@ -25,3 +29,4 @@
     loop_control:
       loop_var: azure_host
       label: azure_host
+    when: 1 < 0
