@@ -34,7 +34,3 @@
 - name: add all hosts to one 
   set_fact:
     host_outputs: "{{host_data.record}}"
-
-- name: Print host_data
-  debug:
-    var: host_outputs

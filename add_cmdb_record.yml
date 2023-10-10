@@ -21,6 +21,10 @@
     loop_control:
       loop_var: azure_host
 
+  - name: Print host_data
+    debug:
+      var: host_outputs
+
   - name: Update SNOW - VMs
     include_tasks: tasks/cmdb_add_or_update_network_adapters.yml
     loop: "{{all_network_interfaces.networkinterfaces | list}}"
