@@ -18,8 +18,8 @@
       supported_by: "JonnySykes IT Services LTD"
 #      host_name: "{{ item.name }}"
  #     os_domain: "{{ item.os_type }}"
- #     virtual: "true"
- #     location: "{{item.location}}"
+      virtual: "true"
+      location: "{{host_data.record.location}}"
  # register: host_data
 
 - name: Print a variable
