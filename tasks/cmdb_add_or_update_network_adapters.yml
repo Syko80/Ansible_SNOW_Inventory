@@ -1,8 +1,8 @@
 ---
 - name: Testing
   debug:
-    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map('first') | map(attribute='private_ip_address') | first}}"
-
+#    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map('first') | map(attribute='private_ip_address') | first}}"
+    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map(attribute='private_ip_address')}}"
 - name: Add or Update CMDB CI - Network Adapters
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
@@ -50,8 +50,7 @@
       ip_address: "{{ input_ipaddress }}"
       ip_version: "4"
   loop:
-  #  - "{{ all_network_interfaces.networkinterfaces.ip_configurations[0] | selectattr('name', '==', network_adapter) | map(attribute='private_ip_address') | first }}"
-    - "{{ all_network_interfaces.networkinterfaces.ip_configurations[0] | selectattr('name', '==', network_adapter) }}"
+    - "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map('first') | map(attribute='private_ip_address') | first}}"
   loop_control:
     loop_var: input_ipaddress
 
