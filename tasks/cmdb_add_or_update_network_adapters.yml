@@ -2,7 +2,7 @@
 - name: Add or Update CMDB CI - Network Adapters
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
-    cmdb_id: "{{ host_data.record.sys_id }}"
+    cmdb_ci: "{{ host_data.record.sys_id }}"
     name: "{{ network_adapter }}"
     short_description: "Azure Network Adapter"
 #    serial_number: "{{ item.id }}"
