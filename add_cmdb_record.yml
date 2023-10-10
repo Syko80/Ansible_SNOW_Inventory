@@ -15,8 +15,14 @@
   - name: Gather Azure Data
     include_tasks: tasks/get_azure_resources.yml
 
-  - name: Update SNOW
+  - name: Update SNOW - VMs
     include_tasks: tasks/cmdb_add_or_update_hosts.yml
     loop: "{{all_vms.vms | list}}"
     loop_control:
       loop_var: azure_host
+
+  - name: Update SNOW - VMs
+    include_tasks: tasks/cmdb_add_or_update_network_adapters.yml
+    loop: "{{all_network_interfaces.networkinterfaces | list}}"
+    loop_control:
+      loop_var: azure_networkadapter
