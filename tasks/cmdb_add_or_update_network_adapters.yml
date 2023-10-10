@@ -27,5 +27,5 @@
 
  - name: Print a variable
    debug:
-     var: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='subnet') | first }}"
+     msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='subnet') | first }}"
   
