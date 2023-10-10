@@ -18,6 +18,7 @@
     environment: "{{tags.environment | default('Environment Tag Missing')}}"
     category: Hardware
     ip_address: "Open Network Adapters"
+    manufacturer: "{{ microsoft_snow_id}}"
     other:
       discovery_source: "Azure through Ansible Automation"
       owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
