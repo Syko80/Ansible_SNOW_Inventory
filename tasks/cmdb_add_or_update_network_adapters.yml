@@ -2,7 +2,7 @@
 - name: Testing
   debug:
 #    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations') | map('first') | map(attribute='private_ip_address') | first}}"
-    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations'))}}"
+    msg: "{{ all_network_interfaces.networkinterfaces | selectattr('name', '==', network_adapter) | map(attribute='ip_configurations')}}"
 - name: Add or Update CMDB CI - Network Adapters
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
