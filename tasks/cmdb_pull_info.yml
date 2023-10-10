@@ -11,3 +11,8 @@
     sys_class_name: "cmdb_ci_ip_address"
   #register: snow_extract
 
+- name: Pull Model info from SNOW
+  servicenow.itsm.configuration_item_info:
+    instance: "{{snow_details}}"
+    sys_class_name: "cmdb_model"
+  #register: snow_extract
