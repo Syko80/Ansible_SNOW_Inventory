@@ -1,4 +1,8 @@
 ---
+- name: Testing
+  debug:
+    msg: "{{ all_network_interfaces.networkinterfaces.ip_configurations[0] | selectattr('name', '==', network_adapter) }}"
+
 - name: Add or Update CMDB CI - Network Adapters
   servicenow.itsm.configuration_item:
     instance: "{{snow_details}}"
