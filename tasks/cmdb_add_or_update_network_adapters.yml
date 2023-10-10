@@ -16,6 +16,7 @@
     category: Hardware
 #    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
     other:
+      manufacturer: "{{ microsoft_snow_id}}"
       subcategory: Network
       cmdb_ci: "{{ host_data.record.sys_id }}"
       discovery_source: "Azure through Ansible Automation"
@@ -42,6 +43,7 @@
 #    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
     other:
       #subcategory: Network
+      manufacturer: "{{ microsoft_snow_id}}"
       nic: "{{ network_data.record.sys_id }}"
       discovery_source: "Azure through Ansible Automation"
 #      owned_by: "{{tags.owner | default('Owner Tag Missing')}}"
