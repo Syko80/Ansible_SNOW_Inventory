@@ -20,4 +20,4 @@
     loop: "{{all_vms.vms | list}}"
     loop_control:
       loop_var: azure_host
-      label: azure_host
+      label: "{{azure_host}}"
