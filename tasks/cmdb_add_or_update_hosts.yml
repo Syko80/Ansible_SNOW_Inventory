@@ -34,6 +34,6 @@
   #- name: "Add Network Adapter for {{azure_host.name}}"
   #  include_tasks: tasks/cmdb_add_or_update_network_adapters.yml
 
-  - name: Pring host_data
-    debug:
-      var: host_data
+- name: Print host_data
+  debug:
+    var: host_data
