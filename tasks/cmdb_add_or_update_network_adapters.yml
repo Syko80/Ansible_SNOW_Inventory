@@ -1,24 +1,28 @@
 ---
-- name: Add or Update CMDB CI - Network Adapters
-  servicenow.itsm.configuration_item:
-    instance: "{{snow_details}}"
-    name: "{{ azure_networkadapter.name }}"
-    short_description: "Azure Network Adapter"
-#    serial_number: "{{ item.id }}"
-    #asset_tag: "{{ inv_entries.asset }}"
-    sys_class_name: "cmdb_ci_network_adapter"
-    #environment: "{{tags.environment | default('Environment Tag Missing')}}"
-    category: Hardware
-#    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
-    other:
-      subcategory: Network
-      cmdb_ci: "{{ host_data.record | selectattr('name', '==', network_adapter) | map(attribute='sys_id') | first }}"
-      discovery_source: "Azure through Ansible Automation"
-      owned_by: "{{azure_networkadapter.tags.owner | default('Owner Tag Missing')}}"
-      supported_by: "JonnySykes IT Services LTD"
-      virtual: "true"
-      location: "{{ azure_networkadapter.location }}"
-  register: networkadapter_data
+#- name: Add or Update CMDB CI - Network Adapters
+#  servicenow.itsm.configuration_item:
+#    instance: "{{snow_details}}"
+#    name: "{{ azure_networkadapter.name }}"
+#    short_description: "Azure Network Adapter"
+##    serial_number: "{{ item.id }}"
+#    #asset_tag: "{{ inv_entries.asset }}"
+#    sys_class_name: "cmdb_ci_network_adapter"
+#    #environment: "{{tags.environment | default('Environment Tag Missing')}}"
+#    category: Hardware
+##    #ip_address: "{{ private_ipv4_addresses | default('IP Address Missing') }}"
+#    other:
+#      subcategory: Network
+#      cmdb_ci: "{{ host_outputs | selectattr('name', '==', network_adapter) | map(attribute='sys_id') | first }}"
+#      discovery_source: "Azure through Ansible Automation"
+#      owned_by: "{{azure_networkadapter.tags.owner | default('Owner Tag Missing')}}"
+#      supported_by: "JonnySykes IT Services LTD"
+#      virtual: "true"
+#      location: "{{ azure_networkadapter.location }}"
+#  register: networkadapter_data
+
+- name: get the hostname that a network adapter belongs to 
+  debug:
+    msg: "{{ azure_networkadapter.name }}"
 
 - name: Print a variable
   debug:
