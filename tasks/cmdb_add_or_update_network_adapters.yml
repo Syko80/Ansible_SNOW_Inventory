@@ -46,8 +46,8 @@
       ip_address: "{{ input_ipaddress }}"
       ip_version: "4"
   loop:
-    - "{{ host_data.record.private_ip_address }}"
-    - "{{ host_data.record.public_ip_address}}"
+    - "{{ network_adapter.private_ip_address }}"
+    - "{{ network_adapter.public_ip_address}}"
   loop_control:
     loop_var: input_ipaddress
 
